@@ -1,2 +1,9 @@
-rootProject.name = 'web_api'
+rootProject.name = 'employ-box'
+
+include 'base-domain'
+include 'web-api'
+include 'base-exception'
+include 'employ-box-domain'
+include 'employ-box-business'
+include 'employ-box-business-client'
 
