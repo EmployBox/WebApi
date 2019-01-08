@@ -3,8 +3,8 @@ package isel.ps.employbox.model.binders;
 import isel.ps.employbox.model.entities.Account;
 import isel.ps.employbox.model.input.InAccount;
 import isel.ps.employbox.model.output.OutAccount;
+import kotlin.NotImplementedError;
 import org.springframework.stereotype.Component;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -24,6 +24,6 @@ public class AccountBinder implements ModelBinder<Account,OutAccount,InAccount> 
 
     @Override
     public Account bindInput(InAccount object) {
-        throw new NotImplementedException();
+        throw new NotImplementedError();
     }
 }

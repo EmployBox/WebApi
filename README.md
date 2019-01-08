@@ -1,11 +1,9 @@
-# Projeto e Seminário 2017/18V 
-## Grupo 15
+# EmployBox - WebAPI
 
-Repositório do projeto **EmployBox**, realizado no âmbito da unidade curricular de Projeto e Seminário. 
+[![Build Status](https://sonarcloud.io/api/project_badges/measure?project=web_api&metric=alert_status)](https://sonarcloud.io/dashboard?id=web_api)
+[![Realiability](https://sonarcloud.io/api/project_badges/measure?project=web_api&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=web_api&metric=Reliability)
 
-[Aqui](https://sonarcloud.io/organizations/joao360-github/projects) encontra-se o projeto no SonarCloud .
+### About
+The WebAPI is written in Java with the use of libraries like Spring Boot and Spring Security. It gives data access and manipulation. 
 
-Projeto realizado por:
-* 39128 - Diogo Rodrigues
-* 41423 - João Graça
-* 41557 - Tiago Ribeiro
+The data will be returned in mediaType format HAL.
