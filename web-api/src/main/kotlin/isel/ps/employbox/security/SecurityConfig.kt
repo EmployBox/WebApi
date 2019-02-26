@@ -29,12 +29,20 @@ class SecurityConfig {
         http.csrf().disable()
         http.logout().disable()
 
+
         // Add custom security.
         //http.authenticationManager(authenticationManager);
         //http.securityContextRepository(securityContextRepository);
 
         // Disable authentication for the selected routes.
         http.authorizeExchange()
+                .pathMatchers("/v2/api-docs",
+                        "/swagger-resources",
+                        "/swagger-resources/**",
+                        "/configuration/ui",
+                        "/configuration/security",
+                        "/swagger-ui.html",
+                        "/webjars/**").permitAll()
                 .pathMatchers(HttpMethod.GET, "/").permitAll()
                 .pathMatchers(HttpMethod.GET, "/accounts/users").permitAll()
                 .pathMatchers(HttpMethod.POST, "/accounts/users").permitAll()
@@ -56,6 +64,7 @@ class SecurityConfig {
                 .pathMatchers(HttpMethod.GET, "/jobs").permitAll()
                 .pathMatchers(HttpMethod.GET, "/jobs/**").permitAll()
                 .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .pathMatchers(HttpMethod.GET, "").permitAll()
                 .anyExchange().authenticated()
 
         //Activate security
