@@ -7,6 +7,7 @@ import pt.isel.ps.base.exception.BaseRuntimeException
 import pt.isel.ps.base.exception.BusinessException
 import org.hibernate.exception.ConstraintViolationException
 import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import java.io.Serializable
 import javax.persistence.PersistenceException
 
@@ -69,5 +70,5 @@ abstract class AbstractBaseEntityBO<E: IdBaseEntity<ID>, ID : Serializable> {
     fun getAll(offset: Int, pageSize: Int) = repository.findAll(PageRequest.of(offset, pageSize)).content
 
     fun getByParams(page: Int, pageSize: Int, orderClause: String, orderColumn: String) =
-            repository.getByParams(page, pageSize, orderClause, orderColumn)
+            repository.findAll(PageRequest.of(page, pageSize, Sort.Direction.fromString(orderClause), orderColumn))
 }

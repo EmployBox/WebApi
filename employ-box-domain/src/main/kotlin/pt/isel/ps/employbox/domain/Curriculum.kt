@@ -11,20 +11,20 @@ import javax.persistence.*
 @Entity
 class Curriculum(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        override var id: Long?,
+        override var id: Long,
         var title: String,
         @ManyToOne
         @JoinColumn(name = "accountId")
         var account: Account
-): VersionedBaseEntity<Long?>() {
+): VersionedBaseEntity<Long>() {
     @OneToMany(mappedBy = "curriculum")
-    lateinit var previousJobs: List<PreviousJobs>
+    lateinit var previousJobs: MutableList<PreviousJobs>
     @OneToMany(mappedBy = "curriculum")
-    lateinit var academicBackground: List<AcademicBackground>
+    lateinit var academicBackground: MutableList<AcademicBackground>
     @OneToMany(mappedBy = "curriculum")
-    lateinit var projects: List<Project>
+    lateinit var projects: MutableList<Project>
     @OneToMany(mappedBy = "curriculum")
-    lateinit var experiences: List<CurriculumExperience>
+    lateinit var experiences: MutableList<CurriculumExperience>
     @OneToMany(mappedBy = "curriculum")
-    lateinit var applications: List<Application>
+    lateinit var applications: MutableList<Application>
 }

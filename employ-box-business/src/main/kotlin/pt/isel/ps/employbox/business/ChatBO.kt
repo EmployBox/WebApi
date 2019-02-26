@@ -14,14 +14,13 @@ import org.springframework.stereotype.Component
 @Component
 class ChatBO(
         @Autowired override val repository: ChatRepository,
-        @Autowired val accountBO: AccountBO,
         @Autowired val messageBO: MessageBO
 ) : AbstractBaseEntityBO<Chat, Long>() {
 
     fun getAccountChats(accountId: Long, page: Int, pageSize: Int) =
-        repository.findByAccountFirst(accountBO.get(accountId), PageRequest.of(page, pageSize))
+        repository.findByAccountFirst_Id(accountId, PageRequest.of(page, pageSize))
 
     fun getChatMessages(chatId: Long, page: Int, pageSize: Int): Page<Message> =
-        messageBO.getChatMessages(this.get(chatId), page, pageSize)
+        messageBO.getChatMessages(chatId, page, pageSize)
 
 }

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component
 class MessageBO(
         @Autowired override val repository: MessageRepository
 ) : AbstractBaseEntityBO<Message, Long>() {
-    fun getChatMessages(chat: Chat, page: Int, pageSize: Int): Page<Message> =
-            repository.findByChat(chat, PageRequest.of(page, pageSize))
+    fun getChatMessages(chatId: Long, page: Int, pageSize: Int): Page<Message> =
+            repository.findByChat_Id(chatId, PageRequest.of(page, pageSize))
 
 }

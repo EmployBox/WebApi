@@ -1,5 +1,6 @@
 package pt.isel.ps.employbox.domain
 
+import pt.isel.ps.employbox.common.AccountTypeEnum
 import javax.persistence.Entity
 import javax.persistence.OneToMany
 
@@ -10,7 +11,7 @@ class Moderator(
         email: String?,
         password: String?,
         rating: Double?
-): Account(id, name, email, password, "MOD", rating) {
-    @OneToMany(mappedBy = "moderator")
-    lateinit var ratingsModerated: List<Rating>
+): Account(id, name, email, password, AccountTypeEnum.MODERATOR, rating) {
+    //@OneToMany(mappedBy = "moderator")
+    //lateinit var ratingsModerated: MutableList<Rating>
 }

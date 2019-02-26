@@ -17,7 +17,7 @@ class Comment(
         var accountDest: Account
 ) : VersionedBaseEntity<Long>() {
     @OneToMany(mappedBy = "mainComment")
-    lateinit var replies: List<Comment>
+    lateinit var replies: MutableList<Comment>
     @ManyToOne
     @JoinColumn(name = "mainCommentId")
     lateinit var mainComment: Comment

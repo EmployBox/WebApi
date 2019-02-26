@@ -1,6 +1,7 @@
 package pt.isel.ps.employbox.domain
 
 import pt.isel.ps.base.entity.VersionedBaseEntity
+import pt.isel.ps.employbox.common.AccountTypeEnum
 import pt.isel.ps.employbox.domain.jobs.Job
 import javax.persistence.*
 
@@ -11,29 +12,29 @@ class Account(
         var name: String?,
         var email: String?,
         var password: String?,
-        var accountType: String?,
+        var accountType: AccountTypeEnum,
         var rating: Double?
 ) : VersionedBaseEntity<Long>() {
         @OneToMany(mappedBy = "account")
-        lateinit var offeredJobs: List<Job>
+        lateinit var offeredJobs: MutableList<Job>
         @OneToMany(mappedBy = "accountFrom")
-        lateinit var comments: List<Comment>
+        lateinit var comments: MutableList<Comment>
         @ManyToMany
         @JoinTable(
                 name = "Follows",
                 joinColumns = [JoinColumn(name = "accountIdFollowed" )],
                 inverseJoinColumns = [JoinColumn(name = "accountIdFollower")]
         )
-        lateinit var following: List<Account>
+        lateinit var following: MutableList<Account>
         @ManyToMany
         @JoinTable(
                 name = "Follows",
                 joinColumns = [JoinColumn(name = "accountIdFollower")],
                 inverseJoinColumns = [JoinColumn(name = "accountIdFollowed")]
         )
-        lateinit var followers: List<Account>
+        lateinit var followers: MutableList<Account>
         @OneToMany(mappedBy = "accountFirst")
-        lateinit var chats: List<Chat>
-        @OneToMany(mappedBy = "accountTo")
-        lateinit var ratings: List<Rating>
+        lateinit var chats: MutableList<Chat>
+        @OneToMany(mappedBy = "id.accountTo")
+        lateinit var ratings: MutableList<Rating>
 }

@@ -1,5 +1,6 @@
 package pt.isel.ps.employbox.domain
 
+import pt.isel.ps.employbox.common.AccountTypeEnum
 import pt.isel.ps.employbox.domain.jobs.Application
 import javax.persistence.Entity
 import javax.persistence.OneToMany
@@ -13,9 +14,9 @@ class UserAccount(
         rating: Double?,
         var summary: String?,
         var photoUrl: String?
-) : Account(id, name, email, password, "USR", rating) {
+) : Account(id, name, email, password, AccountTypeEnum.USER, rating) {
     @OneToMany(mappedBy = "account")
-    lateinit var curricula: List<Curriculum>
+    lateinit var curricula: MutableList<Curriculum>
     @OneToMany(mappedBy = "account")
-    lateinit var applications: List<Application>
+    lateinit var applications: MutableList<Application>
 }

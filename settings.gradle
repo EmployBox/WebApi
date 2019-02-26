@@ -6,4 +6,5 @@ include 'base-exception'
 include 'employ-box-domain'
 include 'employ-box-business'
 include 'employ-box-business-client'
+include 'employ-box-common'
 

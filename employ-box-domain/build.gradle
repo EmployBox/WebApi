@@ -38,6 +38,7 @@ dependencies {
     runtimeOnly('com.microsoft.sqlserver:mssql-jdbc:6.4.0.jre8')
     runtimeOnly('org.postgresql:postgresql:42.2.5')
     compile project(":base-domain")
+    compile project(":employ-box-common")
 }
 compileKotlin {
     kotlinOptions {

@@ -15,5 +15,5 @@ class Chat(
         var accountSecond: Account
         ): VersionedBaseEntity<Long>() {
     @OneToMany(mappedBy = "chat")
-    lateinit var messages: List<Message>
+    lateinit var messages: MutableList<Message>
 }

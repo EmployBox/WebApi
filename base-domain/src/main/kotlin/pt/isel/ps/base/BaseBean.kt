@@ -1,13 +1,14 @@
 package pt.isel.ps.base
 
+import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Component
 
 @Component
 abstract class BaseBean(
-        val mapperFactory: MapperFactoryBean
+        val mapperFactory: ModelMapper
 ) {
     protected fun <F, D> convert(from: F, toClass: Class<D>): D {
-        return mapperFactory.modelMapper.map(from, toClass)
+        return mapperFactory.map(from, toClass)
     }
 
     protected fun <F, D> convertList(from: List<F>, toClass: Class<D>): List<D> {

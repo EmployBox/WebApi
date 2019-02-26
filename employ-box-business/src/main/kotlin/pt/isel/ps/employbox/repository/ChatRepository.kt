@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository
  */
 @Repository
 interface ChatRepository : BaseRepository<Chat, Long> {
-    fun findByAccountFirst(account: Account, pageable: Pageable) : Page<Chat>
+    fun findByAccountFirst_Id(accountId: Long, pageable: Pageable) : Page<Chat>
 }

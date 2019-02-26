@@ -13,9 +13,12 @@ import java.util.*
 interface AccountRepository : BaseRepository<Account, Long> {
     fun findByEmail(email: String) : Optional<Account>
 
-    @Query("select f from Account a inner join a.followers where a.id = :id")
+    @Query("select f from Account a inner join a.followers f where a.id = :id")
     fun findFollowers(@Param("id") id: Long, pageable: Pageable) : Page<Account>
 
-    @Query("select f from Account a inner join a.following where a.id = :id")
+    @Query("select f from Account a inner join a.following f where a.id = :id")
     fun findFolloweds(@Param("id") id: Long, pageable: Pageable) : Page<Account>
+
+    @Query("select f from Account a inner join a.followers f where a.id = :id and f.id = :accountToCheck")
+    fun checkIfFollowing(@Param("id")accountId: Long,@Param("accountToCheck") accountToCheck: Long, pageable: Pageable) : Page<Account>
 }

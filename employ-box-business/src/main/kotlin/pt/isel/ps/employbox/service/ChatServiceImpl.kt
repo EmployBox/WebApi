@@ -1,11 +1,11 @@
 package pt.isel.ps.employbox.service
 
-import pt.isel.ps.base.MapperFactoryBean
+import org.modelmapper.ModelMapper
 import pt.isel.ps.employbox.business.ChatBO
 import pt.isel.ps.employbox.domain.Chat
 import pt.isel.ps.employbox.model.ChatModel
 import pt.isel.ps.employbox.model.MessageModel
-import pt.isel.ps.employbox.model.PageModel
+import pt.isel.ps.base.model.PageModel
 import org.springframework.stereotype.Component
 
 /**
@@ -13,9 +13,8 @@ import org.springframework.stereotype.Component
  */
 @Component
 class ChatServiceImpl(
-        mapperFactoryBean: MapperFactoryBean,
-        override val business: ChatBO
-) : AbstractBaseEntityService<Chat, ChatModel, Long>(mapperFactoryBean), ChatService {
+        override val business: ChatBO, modelMapper: ModelMapper
+) : AbstractBaseEntityService<Chat, ChatModel, Long>(modelMapper), ChatService {
 
     override val modelClass: Class<ChatModel> = ChatModel::class.java
 

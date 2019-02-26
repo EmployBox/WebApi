@@ -65,6 +65,7 @@ dependencies {
     runtimeOnly('com.microsoft.sqlserver:mssql-jdbc')
     runtimeOnly('org.postgresql:postgresql')
     compile project(":${artifactId}")
+    compile project(":employ-box-business")
 }
 
 compileKotlin {

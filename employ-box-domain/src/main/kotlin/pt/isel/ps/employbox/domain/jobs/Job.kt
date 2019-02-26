@@ -8,7 +8,7 @@ import javax.persistence.*
 @Entity
 class Job(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        override var id: Long?,
+        override var id: Long,
         var title: String?,
         var address: String?,
         var wage: Int?,
@@ -17,14 +17,15 @@ class Job(
         var offerEndDate: Date?,
         var offerType: String?,
         var type: String?,
+        var location: String?,
         @ManyToOne
         @JoinColumn(name = "accountId")
         var account: Account?
-) : VersionedBaseEntity<Long?>() {
+) : VersionedBaseEntity<Long>() {
     @OneToMany(mappedBy = "job")
-    lateinit var applications: List<Application>
+    lateinit var applications: MutableList<Application>
     @OneToMany(mappedBy = "job")
-    lateinit var experiences: List<JobExperience>
+    lateinit var experiences: MutableList<JobExperience>
     @OneToMany(mappedBy = "job")
-    lateinit var schedules: List<Schedule>
+    lateinit var schedules: MutableList<Schedule>
 }

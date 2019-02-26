@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository
  */
 @Repository
 interface CommentRepository : BaseRepository<Comment, Long> {
-    fun findByMainComment(mainComment: Comment, pageable: Pageable) : Page<Comment>
+    fun findByMainComment_Id(mainCommentId: Long, pageable: Pageable) : Page<Comment>
+    fun findByAccountFrom_Id(accountFrom_id: Long, pageable: Pageable) : Page<Comment>
 }

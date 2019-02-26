@@ -1,5 +1,6 @@
 package pt.isel.ps.employbox.domain
 
+import pt.isel.ps.employbox.common.AccountTypeEnum
 import javax.persistence.Entity
 
 @Entity
@@ -14,4 +15,4 @@ class Company(
         var logoUrl: String?,
         var webPageUrl: String?,
         var description: String?
-) : Account(id, name, email, password, "CMP", rating)
+) : Account(id, name, email, password, AccountTypeEnum.COMPANY, rating)

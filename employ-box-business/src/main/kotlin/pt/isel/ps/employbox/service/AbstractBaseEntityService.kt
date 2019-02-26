@@ -1,15 +1,15 @@
 package pt.isel.ps.employbox.service
 
-import pt.isel.ps.base.MapperFactoryBean
+import org.modelmapper.ModelMapper
 import pt.isel.ps.employbox.business.AbstractBaseEntityBO
 import pt.isel.ps.base.entity.IdBaseEntity
 import pt.isel.ps.base.model.IdBaseModel
-import pt.isel.ps.employbox.model.PageModel
+import pt.isel.ps.base.model.PageModel
 import org.springframework.stereotype.Component
 import java.io.Serializable
 
 @Component
-abstract class AbstractBaseEntityService<E : IdBaseEntity<ID>, M : IdBaseModel<ID>, ID : Serializable>(mapperFactoryBean: MapperFactoryBean) : AbstractBaseService(mapperFactoryBean) {
+abstract class AbstractBaseEntityService<E : IdBaseEntity<ID>, M : IdBaseModel<ID>, ID : Serializable>(modelMapper: ModelMapper) : AbstractBaseService(modelMapper) {
     abstract val business: AbstractBaseEntityBO<E, ID>
     abstract val modelClass: Class<M>
     abstract val entityClass: Class<E>

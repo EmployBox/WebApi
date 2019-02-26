@@ -1,7 +1,7 @@
 package pt.isel.ps.employbox.service
 
-import pt.isel.ps.base.MapperFactoryBean
-import pt.isel.ps.employbox.model.PageModel
+import org.modelmapper.ModelMapper
+import pt.isel.ps.base.model.PageModel
 import pt.isel.ps.employbox.business.AccountBO
 import pt.isel.ps.employbox.domain.Account
 import pt.isel.ps.employbox.model.AccountModel
@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component
 @Component
 class AccountServiceImpl(
         override val business: AccountBO,
-        mapperFactoryBean: MapperFactoryBean
-) : AbstractBaseEntityService<Account, AccountModel, Long>(mapperFactoryBean), AccountService {
+        modelMapper: ModelMapper
+) : AbstractBaseEntityService<Account, AccountModel, Long>(modelMapper), AccountService {
 
     override val modelClass: Class<AccountModel> = AccountModel::class.java
 
@@ -31,6 +31,10 @@ class AccountServiceImpl(
             convert(business.getByEmail(email), AccountModel::class.java)
 
     override fun convertBeforeSave(model: AccountModel) = convert(model, Account::class.java)
+
+    override fun checkIfFollowing(accountId: Long, accountToCheck: Long) =
+            handleResponse(business.checkIfFollowing(accountId, accountToCheck))
+
 
     private fun handleResponse(page: Page<Account>) =
             convert(page, PageModel::class.java)

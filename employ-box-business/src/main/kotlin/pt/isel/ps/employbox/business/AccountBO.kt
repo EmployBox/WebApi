@@ -4,7 +4,9 @@ import pt.isel.ps.employbox.domain.Account
 import pt.isel.ps.employbox.repository.AccountRepository
 import org.omg.CosNaming.NamingContextPackage.NotFound
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Component
 
@@ -20,4 +22,7 @@ class AccountBO(
 
     fun getFollowds(accountId: Long,  page: Int, pageSize: Int, orderColumn: String, orderClause: String) =
             repository.findFolloweds(accountId, PageRequest.of(page, pageSize, Sort.Direction.valueOf(orderClause), orderColumn))
+
+    fun checkIfFollowing(accountId: Long, accountToCheck: Long) =
+            repository.checkIfFollowing(accountId, accountToCheck, Pageable.unpaged())
 }

@@ -1,8 +1,8 @@
 package pt.isel.ps.employbox.service
 
+import org.modelmapper.ModelMapper
 import pt.isel.ps.base.BaseBean
-import pt.isel.ps.base.MapperFactoryBean
 import org.springframework.stereotype.Component
 
 @Component
-abstract class AbstractBaseService(mapperFactoryBean: MapperFactoryBean) : BaseBean(mapperFactoryBean)
+abstract class AbstractBaseService(modelMapper: ModelMapper) : BaseBean(modelMapper)

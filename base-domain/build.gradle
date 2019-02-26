@@ -45,6 +45,9 @@ dependencies {
     compile group: 'io.projectreactor', name: 'reactor-core', version: '3.2.3.RELEASE'
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.8'
+
+
 }
 
 dependencyManagement {
