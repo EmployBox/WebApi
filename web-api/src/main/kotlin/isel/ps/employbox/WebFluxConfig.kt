@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.http.codec.ServerCodecConfigurer
 import org.springframework.http.codec.json.Jackson2JsonDecoder
 import org.springframework.http.codec.json.Jackson2JsonEncoder
+import org.springframework.security.core.Authentication
 import org.springframework.web.reactive.config.CorsRegistry
 import org.springframework.web.reactive.config.EnableWebFlux
 import org.springframework.web.reactive.config.ResourceHandlerRegistry
@@ -29,13 +30,6 @@ class WebFluxConfig : WebFluxConfigurer {
                 .exposedHeaders("Access-Control-Allow-Origin")
     }
 
-    override fun configureHttpMessageCodecs(configurer: ServerCodecConfigurer) {
-        configurer.defaultCodecs().jackson2JsonEncoder(Jackson2JsonEncoder(ObjectMapper()
-                .setSerializationInclusion(JsonInclude.Include.NON_EMPTY)))
-        configurer.defaultCodecs().jackson2JsonDecoder(Jackson2JsonDecoder(ObjectMapper()
-                .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)))
-    }
-
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler("/swagger-ui.html**")
                 .addResourceLocations("classpath:/META-INF/resources/")
@@ -46,6 +40,7 @@ class WebFluxConfig : WebFluxConfigurer {
 
     @Bean
     fun api() = Docket(DocumentationType.SWAGGER_2)
+            .ignoredParameterTypes(Authentication::class.java)
             .select()
             .apis(RequestHandlerSelectors.any())
             .paths(PathSelectors.any())

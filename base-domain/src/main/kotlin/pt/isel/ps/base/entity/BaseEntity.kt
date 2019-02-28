@@ -17,11 +17,9 @@ abstract class BaseEntity : Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     var created: Date? = null
-        private set
 
     @Temporal(TemporalType.TIMESTAMP)
     var updated: Date? = null
-        private set
 
     val lastUpdateDate: Date?
         get() = if (updated != null) updated else created
@@ -59,15 +57,6 @@ abstract class BaseEntity : Serializable {
     fun doBeforeDelete() {
 
     }
-
-
-//    override fun equals(obj: Any?): Boolean {
-//        return EqualsBuilder.reflectionEquals(this, obj, false)
-//    }
-//
-//    override fun hashCode(): Int {
-//        return HashCodeBuilder.reflectionHashCode(this, false)
-//    }
 
     companion object {
 

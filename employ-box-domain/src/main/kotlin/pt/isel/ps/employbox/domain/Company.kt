@@ -1,9 +1,11 @@
 package pt.isel.ps.employbox.domain
 
 import pt.isel.ps.employbox.common.AccountTypeEnum
+import javax.persistence.Embeddable
 import javax.persistence.Entity
 
 @Entity
+@Embeddable
 class Company(
         id: Long,
         email: String?,

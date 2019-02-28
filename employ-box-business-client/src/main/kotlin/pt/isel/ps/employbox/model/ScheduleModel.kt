@@ -1,16 +1,15 @@
 package pt.isel.ps.employbox.model
 
 import pt.isel.ps.base.model.IdBaseModel
-import pt.isel.ps.employbox.domain.jobs.Job
 import java.util.*
 
 class ScheduleModel(
-        id: Long,
-        var date: Date?,
-        var startHour: Date?,
-        var endHour: Date?,
-        var repeats: String?,
-        var job: Job
+        id: Long? = null,
+        var date: Date? = null,
+        var startHour: Date? = null,
+        var endHour: Date? = null,
+        var repeats: String? = null,
+        var job: JobModel? = null
 ) : IdBaseModel<Long>(id) {
 
 }

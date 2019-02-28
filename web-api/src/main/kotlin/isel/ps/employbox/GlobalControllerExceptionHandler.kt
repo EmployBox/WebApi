@@ -42,7 +42,7 @@ class GlobalControllerExceptionHandler {
         return ResponseEntity(error, HttpStatus.CONFLICT)
     }
 
-    class ErrorModel(val type: String, val status: Int, val detail: String, val title: String)
+    data class ErrorModel(val type: String, val status: Int, val detail: String, val title: String)
 
     companion object {
         private val BLANK = "about:BLANK"

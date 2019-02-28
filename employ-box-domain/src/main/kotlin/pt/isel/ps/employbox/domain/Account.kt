@@ -1,20 +1,21 @@
 package pt.isel.ps.employbox.domain
 
-import pt.isel.ps.base.entity.VersionedBaseEntity
+import pt.isel.ps.base.entity.IdBaseEntity
 import pt.isel.ps.employbox.common.AccountTypeEnum
 import pt.isel.ps.employbox.domain.jobs.Job
 import javax.persistence.*
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 class Account(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        override var id: Long,
+        override var id: Long?,
         var name: String?,
         var email: String?,
         var password: String?,
         var accountType: AccountTypeEnum,
         var rating: Double?
-) : VersionedBaseEntity<Long>() {
+) : IdBaseEntity<Long>() {
         @OneToMany(mappedBy = "account")
         lateinit var offeredJobs: MutableList<Job>
         @OneToMany(mappedBy = "accountFrom")

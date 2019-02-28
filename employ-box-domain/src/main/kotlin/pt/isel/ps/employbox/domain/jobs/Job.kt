@@ -1,6 +1,6 @@
 package pt.isel.ps.employbox.domain.jobs
 
-import pt.isel.ps.base.entity.VersionedBaseEntity
+import pt.isel.ps.base.entity.IdBaseEntity
 import pt.isel.ps.employbox.domain.Account
 import java.util.*
 import javax.persistence.*
@@ -8,7 +8,7 @@ import javax.persistence.*
 @Entity
 class Job(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        override var id: Long,
+        override var id: Long?,
         var title: String?,
         var address: String?,
         var wage: Int?,
@@ -21,7 +21,7 @@ class Job(
         @ManyToOne
         @JoinColumn(name = "accountId")
         var account: Account?
-) : VersionedBaseEntity<Long>() {
+) : IdBaseEntity<Long>() {
     @OneToMany(mappedBy = "job")
     lateinit var applications: MutableList<Application>
     @OneToMany(mappedBy = "job")

@@ -4,12 +4,12 @@ import pt.isel.ps.base.model.IdBaseModel
 import java.util.*
 
 class PreviousJobsModel(
-        id: Long,
-        var beginDate: Date?,
-        var endDate: Date?,
-        var companyName: String?,
-        var workLoad: String?,
-        var role: String?
+        id: Long? = null,
+        var beginDate: Date? = null,
+        var endDate: Date? = null,
+        var companyName: String? = null,
+        var workLoad: String? = null,
+        var role: String? = null
 ) : IdBaseModel<Long>(id)
 
 

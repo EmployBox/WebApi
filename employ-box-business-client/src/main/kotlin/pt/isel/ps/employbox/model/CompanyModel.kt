@@ -6,14 +6,14 @@ import pt.isel.ps.employbox.common.AccountTypeEnum
  * @author tiago.ribeiro
  */
 class CompanyModel(
-        id: Long,
-        email: String?,
-        password: String?,
-        rating: Double?,
-        name: String?,
-        var specialization: String?,
-        var yearFounded: Int?,
-        var logoUrl: String?,
-        var webPageUrl: String?,
-        var description: String?
+        id: Long? = null,
+        email: String? = null,
+        password: String? = null,
+        rating: Double? = null,
+        name: String? = null,
+        var specialization: String? = null,
+        var yearFounded: Int? = null,
+        var logoUrl: String? = null,
+        var webPageUrl: String? = null,
+        var description: String? = null
 ) : AccountModel(id, name, email, password, AccountTypeEnum.COMPANY, rating)

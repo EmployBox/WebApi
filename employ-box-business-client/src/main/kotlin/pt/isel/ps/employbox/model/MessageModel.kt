@@ -6,9 +6,9 @@ import pt.isel.ps.base.model.IdBaseModel
  * @author tiago.ribeiro
  */
 class MessageModel(
-        id: Long,
-        var text: String?,
-        var account: AccountModel,
-        var chat: ChatModel
+        id: Long? = null,
+        var text: String? = null,
+        var account: AccountModel? = null,
+        var chat: ChatModel? = null
 ) : IdBaseModel<Long>(id) {
 }

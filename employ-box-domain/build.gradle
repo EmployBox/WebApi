@@ -22,6 +22,7 @@ apply plugin: 'kotlin'
 apply plugin: 'kotlin-spring'
 apply plugin: 'kotlin-jpa'
 apply plugin: 'org.springframework.boot'
+apply plugin: "kotlin-allopen"
 
 sourceCompatibility = 1.8
 
@@ -55,4 +56,6 @@ allOpen {
     annotation("javax.persistence.Entity")
     annotation("javax.persistence.MappedSuperclass")
     annotation("javax.persistence.Embeddable")
+    annotation("com.fasterxml.jackson.annotation.JsonIgnoreProperties")
+
 } 

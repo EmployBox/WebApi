@@ -32,7 +32,7 @@ class JobExperienceController(
             @RequestBody inJobExperience: JobExperienceModel,
             authentication: Authentication
     ) =
-            if(jid != inJobExperience.job.id)
+            if(jid != inJobExperience.job!!.id)
                 throw BadRequestException(BAD_REQUEST_IDS_MISMATCH)
             else service.save(inJobExperience)
 
@@ -43,7 +43,7 @@ class JobExperienceController(
             @RequestBody inJobExperience: JobExperienceModel,
             authentication: Authentication
     ) =
-            if(jid != inJobExperience.job.id || jxpId != inJobExperience.id)
+            if(jid != inJobExperience.job!!.id || jxpId != inJobExperience.id)
                 throw BadRequestException(BAD_REQUEST_IDS_MISMATCH)
             else service.save(inJobExperience)
 

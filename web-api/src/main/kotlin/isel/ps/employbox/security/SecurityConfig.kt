@@ -36,39 +36,40 @@ class SecurityConfig {
 
         // Disable authentication for the selected routes.
         http.authorizeExchange()
-                .pathMatchers("/v2/api-docs",
-                        "/swagger-resources",
-                        "/swagger-resources/**",
-                        "/configuration/ui",
-                        "/configuration/security",
-                        "/swagger-ui.html",
-                        "/webjars/**").permitAll()
-                .pathMatchers(HttpMethod.GET, "/").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/users").permitAll()
-                .pathMatchers(HttpMethod.POST, "/accounts/users").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/users/*").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/users/*/applications").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/users/*/jobs/*/applications/*").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/users/*/jobs/*/applications").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/users/*/curricula").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/users/*/curricula/**").permitAll()
-                .pathMatchers(HttpMethod.POST, "/accounts/companies").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/companies").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/companies/*").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/*/applications").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/*/ratings").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/*").permitAll()
-                .pathMatchers(HttpMethod.GET, "/accounts/*/comments").permitAll()
-                .pathMatchers(HttpMethod.GET, "/jobs/*/schedules").permitAll()
-                .pathMatchers(HttpMethod.GET, "/jobs/*/applications").permitAll()
-                .pathMatchers(HttpMethod.GET, "/jobs").permitAll()
-                .pathMatchers(HttpMethod.GET, "/jobs/**").permitAll()
-                .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .pathMatchers(HttpMethod.GET, "").permitAll()
-                .anyExchange().authenticated()
+                .pathMatchers("/**").permitAll()
+//                .pathMatchers("/v2/api-docs",
+//                        "/swagger-resources",
+//                        "/swagger-resources/**",
+//                        "/configuration/ui",
+//                        "/configuration/security",
+//                        "/swagger-ui.html",
+//                        "/webjars/**").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/users").permitAll()
+//                .pathMatchers(HttpMethod.POST, "/accounts/users").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/users/*").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/users/*/applications").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/users/*/jobs/*/applications/*").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/users/*/jobs/*/applications").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/users/*/curricula").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/users/*/curricula/**").permitAll()
+//                .pathMatchers(HttpMethod.POST, "/accounts/companies").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/companies").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/companies/*").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/*/applications").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/*/ratings").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/*").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/accounts/*/comments").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/jobs/*/schedules").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/jobs/*/applications").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/jobs").permitAll()
+//                .pathMatchers(HttpMethod.GET, "/jobs/**").permitAll()
+//                .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+//                .pathMatchers(HttpMethod.GET, "").permitAll()
+//                .anyExchange().authenticated()
 
         //Activate security
-        http.httpBasic()
+//        http.httpBasic()
 
         return http.build()
     }

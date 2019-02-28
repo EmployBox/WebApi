@@ -1,6 +1,6 @@
 package pt.isel.ps.employbox.domain.childs
 
-import pt.isel.ps.base.entity.VersionedBaseEntity
+import pt.isel.ps.base.entity.IdBaseEntity
 import pt.isel.ps.employbox.domain.Account
 import pt.isel.ps.employbox.domain.Curriculum
 import javax.persistence.*
@@ -17,4 +17,4 @@ class Project(
         override var account: Account,
         var name: String?,
         var description: String?
-) : VersionedBaseEntity<Long?>(), CurriculumChild
+) : IdBaseEntity<Long>(), CurriculumChild

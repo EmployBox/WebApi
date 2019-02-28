@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component
 import pt.isel.ps.employbox.business.UserAccountBO
 import pt.isel.ps.employbox.domain.UserAccount
 import pt.isel.ps.base.model.PageModel
+import pt.isel.ps.employbox.common.AccountTypeEnum
 import pt.isel.ps.employbox.model.UserAccountModel
 
 /**
@@ -24,4 +25,9 @@ class UserAccountServiceImpl(
 
     override fun convertBeforeSave(model: UserAccountModel) =
             convert(model, UserAccount::class.java)
+
+    override fun save(model: UserAccountModel): UserAccountModel {
+        model.accountType = AccountTypeEnum.USER
+        return super.save(model)
+    }
 }

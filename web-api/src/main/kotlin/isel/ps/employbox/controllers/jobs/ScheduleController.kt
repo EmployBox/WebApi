@@ -30,7 +30,7 @@ class ScheduleController(
             @RequestBody inSchedule: ScheduleModel,
             authentication: Authentication
     ) =
-            if(scheduleId != inSchedule.id || jobId != inSchedule.job.id)
+            if(scheduleId != inSchedule.id || jobId != inSchedule.job!!.id)
                 throw BadRequestException(ErrorMessages.BAD_REQUEST_IDS_MISMATCH)
             else service.save(inSchedule)
 
@@ -40,7 +40,7 @@ class ScheduleController(
             @RequestBody inSchedule: ScheduleModel,
             authentication: Authentication
     ) =
-            if(jobId != inSchedule.job.id)
+            if(jobId != inSchedule.job!!.id)
                 throw BadRequestException(ErrorMessages.BAD_REQUEST_IDS_MISMATCH)
             else service.save(inSchedule)
 

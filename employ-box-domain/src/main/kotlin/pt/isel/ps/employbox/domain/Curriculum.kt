@@ -1,6 +1,6 @@
 package pt.isel.ps.employbox.domain
 
-import pt.isel.ps.base.entity.VersionedBaseEntity
+import pt.isel.ps.base.entity.IdBaseEntity
 import pt.isel.ps.employbox.domain.childs.AcademicBackground
 import pt.isel.ps.employbox.domain.childs.CurriculumExperience
 import pt.isel.ps.employbox.domain.childs.PreviousJobs
@@ -11,12 +11,12 @@ import javax.persistence.*
 @Entity
 class Curriculum(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        override var id: Long,
+        override var id: Long?,
         var title: String,
         @ManyToOne
         @JoinColumn(name = "accountId")
         var account: Account
-): VersionedBaseEntity<Long>() {
+): IdBaseEntity<Long>() {
     @OneToMany(mappedBy = "curriculum")
     lateinit var previousJobs: MutableList<PreviousJobs>
     @OneToMany(mappedBy = "curriculum")

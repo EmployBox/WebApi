@@ -1,5 +1,9 @@
 package isel.ps.employbox.controllers.account
 
+import com.google.code.siren4j.converter.ReflectingConverter
+import com.google.code.siren4j.resource.CollectionResource
+import isel.ps.employbox.resources.AccountResource
+import org.modelmapper.ModelMapper
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
 import pt.isel.ps.employbox.model.AccountModel
@@ -8,7 +12,8 @@ import pt.isel.ps.employbox.service.AccountService
 @RestController
 @RequestMapping("/accounts")
 class AccountController(
-        private val service: AccountService
+        private val service: AccountService,
+        private val mapper : ModelMapper
 ) {
 
     @GetMapping
@@ -22,7 +27,8 @@ class AccountController(
 
     @GetMapping("/{accountId}")
     fun getAccount(@PathVariable accountId: Long) =
-            service.retrieve(accountId)
+            mapper.map(service.retrieve(accountId), AccountResource::class.java)
+                    .let { ReflectingConverter.newInstance().toEntity(it) }
 
     @GetMapping("/self")
     fun getAccount(authentication: Authentication) =

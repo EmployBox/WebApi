@@ -2,10 +2,12 @@ package pt.isel.ps.employbox.domain
 
 import pt.isel.ps.employbox.common.AccountTypeEnum
 import pt.isel.ps.employbox.domain.jobs.Application
+import javax.persistence.Embeddable
 import javax.persistence.Entity
 import javax.persistence.OneToMany
 
 @Entity
+@Embeddable
 class UserAccount(
         id: Long,
         name: String?,

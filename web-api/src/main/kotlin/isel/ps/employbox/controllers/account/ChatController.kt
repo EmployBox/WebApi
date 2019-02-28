@@ -30,13 +30,13 @@ class ChatController(
 
     @PostMapping
     fun createChat(@PathVariable id: Long, @RequestBody inChat: ChatModel, authentication: Authentication) =
-        if(id != inChat.accountFirst.id)
+        if(id != inChat.accountFirst!!.id)
             throw BadRequestException(BAD_REQUEST_IDS_MISMATCH)
         else service.save(inChat)
 
     @PostMapping("/{cid}/messages")
     fun createMessage(@PathVariable id: Long, @PathVariable cid: Long, @RequestBody msg: MessageModel, authentication: Authentication)=
-        if(cid != msg.chat.id)
+        if(cid != msg.chat!!.id)
             throw BadRequestException(BAD_REQUEST_IDS_MISMATCH)
         else messageService.save(msg)
 

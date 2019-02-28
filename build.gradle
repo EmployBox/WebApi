@@ -42,8 +42,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation('com.fasterxml.jackson.module:jackson-module-kotlin')
-    runtime('com.google.cloud:google-cloud-logging-logback:0.46.0-alpha')
-    compile 'com.google.cloud.sql:postgres-socket-factory:1.0.10'
+//    runtime('com.google.cloud:google-cloud-logging-logback:0.46.0-alpha')
+//    compile 'com.google.cloud.sql:postgres-socket-factory:1.0.10'
     //compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.2.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.0.2.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-json', version: '2.0.2.RELEASE'
@@ -64,6 +64,7 @@ dependencies {
     runtimeOnly('com.h2database:h2')
     runtimeOnly('com.microsoft.sqlserver:mssql-jdbc')
     runtimeOnly('org.postgresql:postgresql')
+    compile project(":web-api")
 }
 
 compileKotlin {
@@ -98,4 +99,5 @@ allOpen {
     annotation("javax.persistence.Entity")
     annotation("javax.persistence.MappedSuperclass")
     annotation("javax.persistence.Embeddable")
+    annotation("com.fasterxml.jackson.annotation.JsonIgnoreProperties")
 }

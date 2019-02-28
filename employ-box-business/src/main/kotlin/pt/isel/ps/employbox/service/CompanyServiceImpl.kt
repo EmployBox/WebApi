@@ -6,6 +6,7 @@ import pt.isel.ps.employbox.domain.Company
 import pt.isel.ps.employbox.model.CompanyModel
 import pt.isel.ps.base.model.PageModel
 import org.springframework.stereotype.Component
+import pt.isel.ps.employbox.common.AccountTypeEnum
 
 /**
  * @author tiago.ribeiro
@@ -26,5 +27,10 @@ class CompanyServiceImpl(
     override fun findByParams(ratingLow: Int?, ratingHigh: Int?, name: String?, specialization: String?, yearFounded: Int?, address: String?, orderColumn: String, orderClause: String, page: Int, pageSize: Int): PageModel<CompanyModel> {
         return convert(business.findByParams(ratingLow, ratingHigh, name, specialization, yearFounded, orderColumn, orderClause, page, pageSize), PageModel::class.java)
                 .map { convert(it, modelClass) }
+    }
+
+    override fun save(model: CompanyModel): CompanyModel {
+        model.accountType = AccountTypeEnum.COMPANY
+        return super.save(model)
     }
 }

@@ -1,6 +1,6 @@
 package pt.isel.ps.employbox.domain.childs
 
-import pt.isel.ps.base.entity.VersionedBaseEntity
+import pt.isel.ps.base.entity.IdBaseEntity
 import pt.isel.ps.employbox.domain.Account
 import pt.isel.ps.employbox.domain.Curriculum
 import java.util.*
@@ -20,4 +20,4 @@ class AcademicBackground(
         var studyArea: String?,
         var institution: String?,
         var degreeObtained: String?
-) : VersionedBaseEntity<Long?>(), CurriculumChild
+) : IdBaseEntity<Long>(), CurriculumChild

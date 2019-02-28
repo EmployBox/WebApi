@@ -1,6 +1,6 @@
 package pt.isel.ps.employbox.domain
 
-import pt.isel.ps.base.entity.VersionedBaseEntity
+import pt.isel.ps.base.entity.IdBaseEntity
 import java.io.Serializable
 import javax.persistence.Embeddable
 import javax.persistence.EmbeddedId
@@ -18,9 +18,9 @@ class Rating(
         var pontuality: Double?,
         var assiduity: Double?,
         var demeanor: Double?
-) : VersionedBaseEntity<Rating.RatingKey?>() {
+) : IdBaseEntity<Rating.RatingKey>() {
     @Embeddable
-    class RatingKey (
+    data class RatingKey (
             @ManyToOne
             var accountFrom: Account?,
             @ManyToOne

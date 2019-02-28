@@ -1,12 +1,12 @@
 package pt.isel.ps.employbox.domain
 
-import pt.isel.ps.base.entity.VersionedBaseEntity
+import pt.isel.ps.base.entity.IdBaseEntity
 import javax.persistence.*
 
 @Entity
 class Message(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        override var id: Long,
+        override var id: Long?,
         var text: String?,
         @ManyToOne
         @JoinColumn(name = "accountId")
@@ -14,4 +14,4 @@ class Message(
         @ManyToOne
         @JoinColumn(name = "chatId")
         var chat: Chat
-) : VersionedBaseEntity<Long>()
+) : IdBaseEntity<Long>()

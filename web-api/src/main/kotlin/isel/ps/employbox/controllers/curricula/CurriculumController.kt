@@ -39,7 +39,7 @@ class CurriculumController(
             @RequestBody inCurriculum: CurriculumModel,
             authentication: Authentication
     ) =
-            if(cid != inCurriculum.id || inCurriculum.account.id != id)
+            if(cid != inCurriculum.id || inCurriculum.account!!.id != id)
                 throw BadRequestException(BAD_REQUEST_IDS_MISMATCH)
             else service.save(inCurriculum)
 

@@ -1,18 +1,22 @@
 package isel.ps.employbox.controllers.user
 
+import com.google.code.siren4j.converter.ReflectingConverter
 import isel.ps.employbox.exceptions.BadRequestException
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
 
 
 import isel.ps.employbox.ErrorMessages.BAD_REQUEST_IDS_MISMATCH
+import isel.ps.employbox.resources.UserAccountResource
+import org.modelmapper.ModelMapper
 import pt.isel.ps.employbox.model.UserAccountModel
 import pt.isel.ps.employbox.service.UserAccountService
 
 @RestController
 @RequestMapping("/accounts/users")
 class UserAccountController(
-        private val service: UserAccountService
+        private val service: UserAccountService,
+        private val mapper: ModelMapper
 ) {
 
     @GetMapping
@@ -28,7 +32,9 @@ class UserAccountController(
     ) = service.findAllBy(name, summary, ratingLow, ratingHigh, orderColumn, orderClause, page, pageSize)
 
     @GetMapping("/{id}")
-    fun getUser(@PathVariable id: Long) = service.retrieve(id)
+    fun getUser(@PathVariable id: Long) =
+            mapper.map(service.retrieve(id), UserAccountResource::class.java)
+                    .let { ReflectingConverter.newInstance().toEntity(it) }
 
 
     @PostMapping
